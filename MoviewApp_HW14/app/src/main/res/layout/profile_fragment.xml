@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="com.example.moviewapp_hw14.ui.ProfileViewModel"/>
+        <import type="androidx.lifecycle.LiveData"/>
+        <variable
+            name="viewModelProfile"
+            type="ProfileViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/getProfileLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible">
+
+            <ImageView
+                android:id="@+id/getImageView"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                app:layout_constraintBottom_toTopOf="@+id/getName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="spread" />
+
+            <EditText
+                android:id="@+id/getName"
+                android:text="@={viewModelProfile.firstName}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:hint="name"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/getFamily"
+                app:layout_constraintTop_toBottomOf="@+id/getImageView" />
+
+            <EditText
+                android:id="@+id/getFamily"
+                android:text="@={viewModelProfile.lastName}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:hint="family"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/getEmail"
+                app:layout_constraintTop_toBottomOf="@+id/getName" />
+
+            <EditText
+                android:id="@+id/getEmail"
+                android:text="@={viewModelProfile.email}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:hint="email"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/getPhoneNumber"
+                app:layout_constraintTop_toBottomOf="@+id/getFamily" />
+
+            <EditText
+                android:id="@+id/getPhoneNumber"
+                android:text="@={viewModelProfile.phoneNumber}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:hint="phone_number"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/getUsername"
+                app:layout_constraintTop_toBottomOf="@+id/getEmail" />
+
+            <EditText
+                android:id="@+id/getUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:hint="username"
+                android:text="@={viewModelProfile.userName}"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/register"
+                app:layout_constraintTop_toBottomOf="@+id/getPhoneNumber" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:text="register"
+                android:textAllCaps="false"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/showProfileLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/showImage"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                app:layout_constraintBottom_toTopOf="@+id/showName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/showName"
+                android:text="@{viewModelProfile.firstName}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/showFamily"
+                app:layout_constraintTop_toBottomOf="@+id/showImage" />
+
+            <TextView
+                android:id="@+id/showFamily"
+                android:text="@{viewModelProfile.lastName}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/showEmail"
+                app:layout_constraintTop_toBottomOf="@+id/showName" />
+
+            <TextView
+                android:id="@+id/showEmail"
+                android:text="@{viewModelProfile.email}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/showPhoneNumber"
+                app:layout_constraintTop_toBottomOf="@+id/showFamily" />
+
+            <TextView
+                android:id="@+id/showPhoneNumber"
+                android:text="@{viewModelProfile.phoneNumber}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/showUsername"
+                app:layout_constraintTop_toBottomOf="@+id/showEmail" />
+
+            <TextView
+                android:id="@+id/showUsername"
+                android:text="@{viewModelProfile.userName}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/showPhoneNumber" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
